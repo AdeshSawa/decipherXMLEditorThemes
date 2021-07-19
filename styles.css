@@ -1,0 +1,14 @@
+body {
+    width:200px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.tx-label {
+    font-weight: 600;
+}
+
+select {
+    margin-top:10px;
+    font-size: .9rem;
+    padding: 2px 5px;
+}

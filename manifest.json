@@ -1,0 +1,20 @@
+{
+    "name": "xml themes for decipher",
+    "description": "xml themes for decipher",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": ["storage","tabs","activeTab"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://bilendi.decipherinc.com/apps/lumos/*/*/*:xmledit"],
+          "css":["contentStyle.css"],
+          "js": ["contentScript.js"]
+        }
+    ]
+}
