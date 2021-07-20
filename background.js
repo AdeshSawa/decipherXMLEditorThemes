@@ -69,6 +69,6 @@ const themes =  [
 ];
 
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.local.set({dt: theme});
+    chrome.storage.local.set({dt: theme, themes: themes});
     console.log('default theme is: '+ themes[parseInt(theme)].name);
 });
