@@ -1,4 +1,4 @@
-let defaultTheme = 0;
+let theme = 0;
 
 const themes =  [
   {name: "monokai", fileName:"monokai.css"},
@@ -8,6 +8,6 @@ const themes =  [
 ];
 
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({ defaultTheme});
-  console.log('Default theme is set to: '+defaultTheme);
+    chrome.storage.local.set({dt: theme});
+    console.log('default theme is: '+ themes[parseInt(theme)].name);
 });

@@ -21,12 +21,16 @@ function buildOptions() {
     );
 }
 
-chrome.storage.sync.get("defaultTheme", ({ defaultTheme }) => {
-    buildOptions();
-    dp.addEventListener('change', (event) => {
-        defaultTheme = dp.value;
-        let currentThemeName = themes[defaultTheme].name;
-        let currentThemeFile = themes[defaultTheme].fileName;
+buildOptions();
+dp.addEventListener('change', (event) => {
+    chrome.tabs.query({active: true, currentWindow:true}, function(tabs) {
+        let tabid = tabs[0].id;
+        let currentThemeName = themes[parseInt(dp.value)].name;
+        let currentThemeFile = themes[parseInt(dp.value)].fileName;
         dis.innerHTML = currentThemeName +" "+currentThemeFile;
-    });
+        chrome.tabs.sendMessage(tabid,{
+            action: "XMLchangeTheme",
+            theme: dp.value
+        })
+    })// get details of currently active tab
 });
