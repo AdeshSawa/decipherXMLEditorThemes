@@ -1,0 +1,48 @@
+:root {
+    --font-col:#f8f8f0;
+    --curs-col:#fff;
+    --bars-col:rgb(61, 61, 61);
+    --bars-col-2:#211f1f;
+    --btn-col:#d61948;
+    --nav-color-3:#211f1f;
+    --nav-color-4:rgb(64 64 64 / 61%);
+    --toolbar-color:rgb(33 33 33);
+}
+
+.cm-s-monokai .CodeMirror-cursor {
+    border-left: 1px solid var(--font-col) !important;
+}
+
+#builder.framework #topToolBar .project-settings, #xmledit.framework #topToolBar .project-settings, #fieldreport.framework #topToolBar .project-settings, #portal.framework #topToolBar .project-settings, #update-info.framework #topToolBar .project-settings {
+    color: var(--font-col) !important;
+}
+
+#builder.framework #topToolBar a, #xmledit.framework #topToolBar a, #fieldreport.framework #topToolBar a, #portal.framework #topToolBar a, #update-info.framework #topToolBar a {
+    color: var(--font-col) !important;
+}
+
+#builder.framework #topToolBar .launch-button, #xmledit.framework #topToolBar .launch-button, #fieldreport.framework #topToolBar .launch-button, #portal.framework #topToolBar .launch-button, #update-info.framework #topToolBar .launch-button {
+    color: var(--font-col) !important;
+    background: var(--btn-col) !important;
+}
+
+.designmap-restyle #fv-nav {
+    background-color: var(--nav-color-3) !important;
+}
+
+.designmap-restyle#gh-navbar .gh-dropdown-menu {
+    background-color: var(--nav-color-3) !important;
+}
+
+div#topToolBar {
+    background: var(--toolbar-color) !important;
+}
+
+.dux-control-bar-bottom, .dux-control-bar-top {
+    background: var(--toolbar-color) !important;
+    border-top: 1px solid var(--toolbar-color) !important;
+}
+
+.designmap-restyle#gh-navbar #gh-navigation-menus .gh-secondary-navigation {
+    background-color: var(--nav-color-4) !important;
+}
