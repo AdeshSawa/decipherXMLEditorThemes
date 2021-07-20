@@ -1,6 +1,11 @@
+* {
+    box-sizing: border-box;
+    padding:0;
+}
+
 body {
-    width:200px;
-    font-family: 'Courier New', Courier, monospace;
+    width:250px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .tx-label {
@@ -8,7 +13,13 @@ body {
 }
 
 select {
-    margin-top:10px;
     font-size: .9rem;
     padding: 2px 5px;
+}
+
+.tx-options {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
