@@ -71,7 +71,7 @@ const themes =  [
 function setTheme(name) {
     const head = document.querySelector("head");
     var element =  document.getElementById('xml-theme');
-    
+
     if (typeof(element) != 'undefined' && element != null) {
         element.href = "https://codemirror.net/theme/"+name+".css";
     }
@@ -99,7 +99,7 @@ window.onload = function() {
     chrome.storage.local.get(['dt'], function(result){
         if(result.dt != undefined){
             let cur  = themes[parseInt(result.dt)].name;
-            setTimeout(()=> {setTheme(cur);}, 1000);
+            setTimeout(()=> {setTheme(cur);}, 600);
         }
     })
 }
