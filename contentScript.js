@@ -1,15 +1,3 @@
-// Decipher set xml editor theme.
-// theme list https://codemirror.net/theme/
-function setTheme(name) {
-    const head = document.querySelector("head");
-    let theme = document.createElement("link");
-    theme.rel = "stylesheet";
-    theme.href = "https://codemirror.net/theme/"+name+".css";
-    head.append(theme);
-    const editor = document.querySelector(".CodeMirror");
-    editor.classList.add("cm-s-"+name);
-}
-
 const themes =  [
     {name:"monokai",fileName:"monokai.css"},
     {name:"3024-day",fileName:"3024-day.css"},
@@ -76,7 +64,28 @@ const themes =  [
     {name:"yeti",fileName:"yeti.css"},
     {name:"yonce",fileName:"yonce.css"},
     {name:"zenburn",fileName:"zenburn.css"}             
-  ];
+];
+
+// Decipher set xml editor theme.
+// theme list https://codemirror.net/theme/
+function setTheme(name) {
+    const head = document.querySelector("head");
+    var element =  document.getElementById('xml-theme');
+    
+    if (typeof(element) != 'undefined' && element != null) {
+        element.href = "https://codemirror.net/theme/"+name+".css";
+    }
+    else {
+        let theme = document.createElement("link");
+        theme.rel = "stylesheet";
+        theme.id = "xml-theme"
+        theme.href = "https://codemirror.net/theme/"+name+".css";
+        head.append(theme);
+    }
+
+    const editor = document.querySelector(".CodeMirror");
+    editor.classList.add("cm-s-"+name);
+}
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     if(msg.action == "XMLchangeTheme") {

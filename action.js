@@ -1,6 +1,3 @@
-const dp = document.querySelector("#themes");
-const dis = document.querySelector("#disp");
-
 // themes datasource
 const themes =  [
     {name:"monokai",fileName:"monokai.css"},
@@ -73,7 +70,6 @@ const themes =  [
 // generates all options shown in the dropdown                
 function buildOptions() {
     themes.forEach((itm,index) => {
-            console.log(itm);
             let option = document.createElement("option");
             option.text = itm.name;
             option.value = index;
@@ -82,16 +78,29 @@ function buildOptions() {
     );
 }
 
+const dp = document.querySelector("#themes");
+const dis = document.querySelector("#disp");
+    
 buildOptions();
-dp.addEventListener('change', (event) => {
-    chrome.tabs.query({active: true, currentWindow:true}, function(tabs) {
-        let tabid = tabs[0].id;
-        let currentThemeName = themes[parseInt(dp.value)].name;
-        let currentThemeFile = themes[parseInt(dp.value)].fileName;
-        dis.innerHTML = currentThemeName +" "+currentThemeFile;
-        chrome.tabs.sendMessage(tabid,{
-            action: "XMLchangeTheme",
-            theme: dp.value
-        })
-    })// get details of currently active tab
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    chrome.storage.local.get(['dt'], function(result){
+        if(result.dt != undefined) {
+            dis.innerHTML = themes[parseInt(result.dt)].name +" "+themes[parseInt(result.dt)].fileName;
+            dp.value = result.dt;
+        }
+    })
+
+    dp.addEventListener('change', (event) => {
+        chrome.tabs.query({active: true, currentWindow:true}, function(tabs) {
+            let tabid = tabs[0].id;
+            let currentThemeName = themes[parseInt(dp.value)].name;
+            let currentThemeFile = themes[parseInt(dp.value)].fileName;
+            dis.innerHTML = currentThemeName +" "+currentThemeFile;
+            chrome.tabs.sendMessage(tabid,{
+                action: "XMLchangeTheme",
+                theme: dp.value
+            })
+        })// get details of currently active tab
+    });
 });
