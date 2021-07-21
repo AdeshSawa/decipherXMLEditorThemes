@@ -1,19 +1,20 @@
 // Decipher set xml editor theme.
 // theme list https://codemirror.net/theme/
 let themes = [];
+const cdn = "https://decixmlthemes.netlify.app/themes/"
 
 function setTheme(name) {
     const head = document.querySelector("head");
     var element =  document.getElementById('xml-theme');
 
     if (typeof(element) != 'undefined' && element != null) {
-        element.href = "https://codemirror.net/theme/"+name+".css";
+        element.href = cdn+name+".css";
     }
     else {
         let theme = document.createElement("link");
         theme.rel = "stylesheet";
         theme.id = "xml-theme"
-        theme.href = "https://codemirror.net/theme/"+name+".css";
+        theme.href = cdn+name+".css";
         head.append(theme);
     }
 
