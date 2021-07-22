@@ -9,7 +9,7 @@
     --toolbar-color:rgb(33 33 33);
 }
 
-.cm-s-monokai .CodeMirror-cursor {
+.CodeMirror-cursor {
     border-left: 1px solid var(--font-col) !important;
 }
 
