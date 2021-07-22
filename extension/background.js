@@ -1,4 +1,4 @@
-let theme = 0;
+let theme = 0
 
 const themes =  [
   {name:"monokai",fileName:"monokai.css"},
@@ -65,10 +65,10 @@ const themes =  [
   {name:"xq-light",fileName:"xq-light.css"},
   {name:"yeti",fileName:"yeti.css"},
   {name:"yonce",fileName:"yonce.css"},
-  {name:"zenburn",fileName:"zenburn.css"}             
-];
+  {name:"zenburn",fileName:"zenburn.css"}
+]
 
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.local.set({dt: theme, themes: themes});
-    console.log('default theme is: '+ themes[parseInt(theme)].name);
+  chrome.storage.local.set({dt: theme, themes: themes})
+  console.log('default theme is: '+ themes[parseInt(theme)].name)
 });

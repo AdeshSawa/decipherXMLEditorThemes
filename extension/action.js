@@ -1,5 +1,7 @@
 // themes datasource
 let themes =  [];
+const dp = document.querySelector("#themes");
+const dis = document.querySelector("#disp");
 
 // generates all options shown in the dropdown                
 function buildOptions() {
@@ -12,16 +14,13 @@ function buildOptions() {
     );
 }
 
-const dp = document.querySelector("#themes");
-const dis = document.querySelector("#disp");
-
-chrome.storage.local.get(['themes'], function(result){
+chrome.storage.local.get(['themes'], function(result) {
     themes = result.themes;
     buildOptions();
 })
 
 window.addEventListener('DOMContentLoaded', () => {
-    chrome.storage.local.get(['dt'], function(result){
+    chrome.storage.local.get(['dt'], function(result) {
         if(result.dt != undefined) {
             dis.innerHTML = themes[parseInt(result.dt)].name;
             dp.value = result.dt;
@@ -33,7 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
             let tabid = tabs[0].id;
             let currentThemeName = themes[parseInt(dp.value)].name;
             dis.innerHTML = currentThemeName;
-            chrome.tabs.sendMessage(tabid,{
+            chrome.tabs.sendMessage(tabid, {
                 action: "XMLchangeTheme",
                 theme: dp.value
             })
