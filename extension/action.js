@@ -14,13 +14,13 @@ function buildOptions() {
     );
 }
 
-chrome.storage.local.get(['themes'], function(result) {
+chrome.storage.sync.get(['themes'], function(result) {
     themes = result.themes;
     buildOptions();
 })
 
 window.addEventListener('DOMContentLoaded', () => {
-    chrome.storage.local.get(['dt'], function(result) {
+    chrome.storage.sync.get(['dt'], function(result) {
         if(result.dt != undefined) {
             dis.innerHTML = themes[parseInt(result.dt)].name;
             dp.value = result.dt;

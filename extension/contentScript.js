@@ -24,14 +24,14 @@ function setTheme(name) {
 
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     if(msg.action == "XMLchangeTheme") {
-        chrome.storage.local.set({dt: msg.theme})
+        chrome.storage.sync.set({dt: msg.theme})
         let cur  = themes[parseInt(msg.theme)].name
         setTheme(cur)
     }
 });
 
 window.onload = function() {
-    chrome.storage.local.get(['dt','themes'], function(result){
+    chrome.storage.sync.get(['dt','themes'], function(result){
         if(result.dt != undefined) {
             themes = result.themes
             let cur  = themes[parseInt(result.dt)].name
