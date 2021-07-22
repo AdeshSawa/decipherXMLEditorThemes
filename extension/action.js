@@ -20,7 +20,7 @@ chrome.storage.local.get(['themes'], function(result){
     buildOptions();
 })
 
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', () => {
     chrome.storage.local.get(['dt'], function(result){
         if(result.dt != undefined) {
             dis.innerHTML = themes[parseInt(result.dt)].name;
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
     })
 
-    dp.addEventListener('change', (event) => {
+    dp.addEventListener('change', () => {
         chrome.tabs.query({active: true, currentWindow:true}, function(tabs) {
             let tabid = tabs[0].id;
             let currentThemeName = themes[parseInt(dp.value)].name;
